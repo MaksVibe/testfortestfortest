@@ -7,6 +7,27 @@ function App() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
+  var Feature = (function () {
+    let count = 23;
+
+    function getCountVariable() {
+      return count;
+    }
+
+    return {
+      getCount: getCountVariable,
+    };
+  })();
+
+  // 1 - ?
+  Feature.getCount();
+
+  // 2 - ?
+  Feature.getCountVariable();
+
+  // 3 - ?
+  // Feature.count;
+
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'email':
@@ -17,6 +38,7 @@ function App() {
         break;
     }
   };
+
   return (
     <div className={s.FormContainer}>
       <form className={s.SignForm}>
