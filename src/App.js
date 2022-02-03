@@ -7,26 +7,165 @@ function App() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  var Feature = (function () {
-    let count = 23;
+  const names = [
+    'Ben',
+    'Sam',
+    'Ben',
+    'Sam',
+    'Sam',
+    'Jack',
+    'Tom',
+    'Tom',
+    'Tom',
+    'Tom',
+  ]; // --> API
 
-    function getCountVariable() {
-      return count;
+  const uniqueNames = [...new Set(names)];
+
+  const totalObj = {};
+
+  for (let i = 0; i < names.length; i++) {
+    if (totalObj[names[i]]) {
+      totalObj[names[i]] = totalObj[names[i]] + 1;
+    } else {
+      totalObj[names[i]] = 1;
     }
+  }
 
-    return {
-      getCount: getCountVariable,
-    };
-  })();
+  const res = Object.keys(totalObj).sort((a, b) => totalObj[b] - totalObj[a]);
 
-  // 1 - ?
-  Feature.getCount();
+  console.log(res);
 
-  // 2 - ?
-  Feature.getCountVariable();
+  ////////////////////////////////////////////////////////
+  // let users = [
+  //   { id: 11, name: 'Adam', age: 23, group: 'editor' },
+  //   { id: 47, name: 'John', age: 28, group: 'admin' },
+  //   { id: 85, name: 'William', age: 34, group: 'editor' },
+  //   { id: 97, name: 'Oliver', age: 28, group: 'admin' },
+  // ];
+  // let res = users.filter(it => new RegExp('oli', 'i').test(it.name));
+  // console.log('res', res);
 
-  // 3 - ?
-  // Feature.count;
+  // REDUCE
+
+  // const a = [
+  //   [1, 2, 3],
+  //   [3, 4, 5],
+  //   [5, 6, 7],
+  // ];
+
+  // const b = a.reduce((prev, item) => prev.concat(item));
+
+  // console.log('b', b);
+
+  ////////////////////////////////////////////////////////
+
+  // forEach
+  // let a = [1, 2, 3, 4, 5, 6, 7];
+  // let b = [];
+  // let sum = 0;
+
+  // a.forEach(item => b.push(Math.pow(item, 2)));
+  // a.forEach(item => (sum += item));
+
+  // console.log(b);
+  // console.log('sum', sum);
+
+  ////////////////////////////////////////////////////////
+
+  // MAP
+  // let a = [1, 2, 3, 4, 5, 6, 7];
+
+  // const b = a.map(item => Math.pow(item, 2));
+  // console.log('b', b);
+
+  ////////////////////////////////////////////////////////
+
+  // let a = [1, 2, 3, 4, 5, 6, 7];
+
+  //EVERY
+  // console.log(
+  //   'Not 0',
+  //   a.every(item => item > 0),
+  // );
+
+  //SOME
+  // console.log(
+  //   'Is negative',
+  //   a.some(item => item < 0),
+  // );
+
+  ////////////////////////////////////////////////////////
+
+  //FILTER
+  // let a = [1, 2, -3, -4, 5, 6, -7];
+
+  // console.log(
+  //   'Negative numbers',
+  //   a.filter(item => item < 0),
+  // );
+  // console.log(
+  //   'Even numbers',
+  //   a.filter(item => item % 2 === 0),
+  // );
+  // console.log('Count negative numbers', a.filter(item => item < 0).length);
+
+  // let b = ['lorem', 'loremi', 'lor', 'lore', 'Lorem ipsum'];
+  // console.log(
+  //   'Item length > 5',
+  //   b.filter(item => item.length > 5),
+  // );
+
+  // let a = [1, 2, [3, 4], 5, [6, 7]];
+  // console.log(
+  //   'Inner arrays',
+  //   a.filter(item => Array.isArray(item)),
+  // );
+
+  // REDUCE
+  // let a = [1, 2, 3, 0, 5, 6, 7];
+
+  // console.log(
+  //   'Sum',
+  //   a.reduce((prev, elem) => prev + elem),
+  // );
+  // console.log(
+  //   'Sum before 0',
+  //   a.reduce((sum, elem, index, arr) =>
+  //     index > arr.indexOf(0) ? sum : sum + elem,
+  //   ),
+  // );
+  // let summ = 0;
+  // a.reduceRight((sum, elem, index, arr) =>
+  //   elem === 0 ? (summ = sum) : sum + elem,
+  // );
+  // console.log('Sum after 0', summ);
+
+  // let num = 1;
+  // a.reduce((sum, elem) => {
+  //   if (sum > 10) {
+  //     return console.log('Count elems to sum > 10', num);
+  //   } else {
+  //     num++;
+  //     return sum + elem;
+  //   }
+  // });
+  // a.reduceRight((sum, elem) => {
+  //   if (sum > 10) {
+  //     return console.log('Count elems to sum > 10', num);
+  //   } else {
+  //     num++;
+  //     return sum + elem;
+  //   }
+  // });
+
+  ////////////////////////////////////////////////////////
+
+  // let values = [3, 1, 3, 5, 2, 4, 4, 4];
+  // let uniqueValues = [...new Set(values)];
+  // console.log('uniqueValues', uniqueValues);
+
+  ////////////////////////////////////////////////////////
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -43,7 +182,7 @@ function App() {
     <div className={s.FormContainer}>
       <form className={s.SignForm}>
         <p>Вы можете авторизоваться с помощью Google Account:</p>
-        <a className={s.GoogleBtn}>Google</a>
+        <button className={s.GoogleBtn}>Google</button>
         <p>
           Или зайти с помощью e-mail и пароля, предварительно
           зарегистрировавшись:
@@ -67,10 +206,10 @@ function App() {
         ></input>
         <ul className={s.SignBtnsWrap}>
           <li>
-            <a className={s.SignInBtn}>войти</a>
+            <button className={s.SignInBtn}>войти</button>
           </li>
           <li>
-            <a className={s.SignUpBtn}>регистрация</a>
+            <button className={s.SignUpBtn}>регистрация</button>
           </li>
         </ul>
       </form>
