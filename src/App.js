@@ -7,34 +7,114 @@ function App() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const names = [
-    'Ben',
-    'Sam',
-    'Ben',
-    'Sam',
-    'Sam',
-    'Jack',
-    'Tom',
-    'Tom',
-    'Tom',
-    'Tom',
-  ]; // --> API
+  ////////////////////////////////////////////////////////
 
-  const uniqueNames = [...new Set(names)];
+  // const obj = {
+  //   viktor: ['apple', 'grape', 'orange', 'apple', 'banana'],
+  //   kate: ['grape', 'orange', 'apple', 'grape', 'banana'],
+  // };
+  //result of calc method should be equal to
+  // {
+  //     viktor: {
+  //         apple: 2,
+  //         grape: 1,
+  //         orange: 1,
+  //         banana: 1,
+  //     },
+  //     kate: {
+  //         apple: 1,
+  //         grape: 2,
+  //         orange: 1,
+  //         banana: 1,
+  //     },
+  // }
 
-  const totalObj = {};
+  ////////////// 1st way //////////////
 
-  for (let i = 0; i < names.length; i++) {
-    if (totalObj[names[i]]) {
-      totalObj[names[i]] = totalObj[names[i]] + 1;
-    } else {
-      totalObj[names[i]] = 1;
-    }
-  }
+  // function calc(obj) {
+  //   const keys = Object.keys(obj);
+  //   const values = Object.values(obj);
 
-  const res = Object.keys(totalObj).sort((a, b) => totalObj[b] - totalObj[a]);
+  //   const result = keys.reduce((acc, name, index, array) => {
+  //     acc[name] = {};
 
-  console.log(res);
+  //     values[index].forEach(fruit => {
+  //       acc[name][fruit] = !acc[name][fruit] ? 1 : acc[name][fruit] + 1;
+  //     });
+
+  //     return acc;
+  //   }, {});
+
+  //   return result;
+  // }
+
+  ////////////// 2nd way //////////////
+
+  // function calc(obj) {
+  //   return Object.fromEntries(
+  //     Object.entries(obj).map(([k, v]) => [
+  //       k,
+  //       v.reduce((a, c) => ((a[c] = a[c] ? ++a[c] : 1), a), {}),
+  //     ]),
+  //   );
+  // }
+
+  ////////////// 3rd way //////////////
+
+  // const calc = obj =>
+  //   Object.keys(obj).reduce(
+  //     (a, b) => (
+  //       (a[b] = obj[b].reduce((a, b) => ((a[b] = a[b] ? a[b] + 1 : 1), a), {})),
+  //       a
+  //     ),
+  //     {},
+  //   );
+
+  ////////////// 4th way //////////////
+
+  // function calc(obj) {
+  //   let result = {};
+  //   for (let [key, value] of Object.entries(obj)) {
+  //     result[key] = {};
+  //     for (let item of value) {
+  //       result[key][item] = (result[key][item] || 0) + 1;
+  //     }
+  //   }
+  //   return result;
+  // }
+
+  // console.log(calc(obj));
+
+  ////////////////////////////////////////////////////////
+
+  // const names = [
+  //   'Ben',
+  //   'Sam',
+  //   'Ben',
+  //   'Sam',
+  //   'Sam',
+  //   'Jack',
+  //   'Tom',
+  //   'Tom',
+  //   'Tom',
+  //   'Tom',
+  // ]; // --> API
+
+  // const uniqueNames = [...new Set(names)];
+
+  // const totalObj = {};
+
+  // for (let i = 0; i < names.length; i++) {
+  //   if (totalObj[names[i]]) {
+  //     totalObj[names[i]] = totalObj[names[i]] + 1;
+  //   } else {
+  //     totalObj[names[i]] = 1;
+  //   }
+  // }
+
+  // const res = Object.keys(totalObj).sort((a, b) => totalObj[b] - totalObj[a]);
+
+  // console.log(res);
 
   ////////////////////////////////////////////////////////
   // let users = [
