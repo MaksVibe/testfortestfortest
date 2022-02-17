@@ -8,7 +8,14 @@ function App() {
   const dispatch = useDispatch();
 
   ////////////////////////////////////////////////////////
-
+  const res = () => {
+    for (let i = 0; i <= 7; i++) {
+      console.log(res());
+      let a = '#';
+      return a + '#';
+    }
+  };
+  res();
   // const obj = {
   //   viktor: ['apple', 'grape', 'orange', 'apple', 'banana'],
   //   kate: ['grape', 'orange', 'apple', 'grape', 'banana'],
