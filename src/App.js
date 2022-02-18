@@ -8,14 +8,45 @@ function App() {
   const dispatch = useDispatch();
 
   ////////////////////////////////////////////////////////
-  const res = () => {
-    for (let i = 0; i <= 7; i++) {
-      console.log(res());
-      let a = '#';
-      return a + '#';
-    }
-  };
-  res();
+
+  // FizzBuzz
+  // const fizzbuzz = num => {
+  //   for (let i = 1; i < num; i++) {
+  //     if (i % 3 === 0 && i % 5 === 0) {
+  //       console.log('fizzbuzz');
+  //     } else if (i % 3 === 0) {
+  //       console.log('fizz');
+  //     } else if (i % 5 === 0) {
+  //       console.log('buzz');
+  //     } else {
+  //       console.log(i);
+  //     }
+  //   }
+  // };
+  // fizzbuzz(16);
+
+  ////////////////////////////////////////////////////////
+  // String repeat
+  // const res = () => {
+  //   let a = '#';
+  //   let b = '';
+  //   for (let i = 1; i <= 7; i++) {
+  //     b += a;
+  //     console.log(b);
+  //     // console.log(a.repeat(i));
+  //   }
+  // };
+  // res();
+  // #
+  // ##
+  // ###
+  // ####
+  // #####
+  // ######
+  // #######
+
+  ////////////////////////////////////////////////////////
+
   // const obj = {
   //   viktor: ['apple', 'grape', 'orange', 'apple', 'banana'],
   //   kate: ['grape', 'orange', 'apple', 'grape', 'banana'],
