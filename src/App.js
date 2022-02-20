@@ -8,7 +8,18 @@ function App() {
   const dispatch = useDispatch();
 
   ////////////////////////////////////////////////////////
+  function createChess(x, y) {
+    for (let i = 0; i < y; i++)
+      console.log(
+        (i % 2 ? ' #' : '# ')
+          .repeat(Math.floor(x / 2) + 1)
+          .slice(0, (x % 2) - 2),
+      );
+  }
+  createChess(8, 8);
 
+  ////////////////////////////////////////////////////////
+  // console.log(res());
   // FizzBuzz
   // const fizzbuzz = num => {
   //   for (let i = 1; i < num; i++) {
