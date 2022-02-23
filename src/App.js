@@ -7,16 +7,62 @@ function App() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  ////////////////////////////////////////////////////////
-  function createChess(x, y) {
-    for (let i = 0; i < y; i++)
-      console.log(
-        (i % 2 ? ' #' : '# ')
-          .repeat(Math.floor(x / 2) + 1)
-          .slice(0, (x % 2) - 2),
-      );
+  var Alphabet = {
+    BINARY: '01',
+    OCTAL: '01234567',
+    DECIMAL: '0123456789',
+    HEXA_DECIMAL: '0123456789abcdef',
+    ALPHA_LOWER: 'abcdefghijklmnopqrstuvwxyz',
+    ALPHA_UPPER: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    ALPHA: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    ALPHA_NUMERIC:
+      '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  };
+
+  function convert(input, source, target) {
+    // TODO
+    if (source.length === 10) {
+      if (target[input]) {
+        console.log(target[input]);
+        return target[input];
+      }
+      console.log(Number(input).toString(Number(target.length)));
+      const result = Number(input).toString(Number(target.length));
+      return result;
+    }
+
+    if (source.length === 2) {
+      if (target[parseInt(input, source.length)]) {
+        console.log(target[parseInt(input, source.length)]);
+        return target[parseInt(input, source.length)];
+      }
+      console.log(parseInt(input, source.length).toString());
+      const result = parseInt(input, source.length).toString();
+      return result;
+    }
   }
-  createChess(8, 8);
+
+  // convert between numeral systems
+  convert('15', Alphabet.DECIMAL, Alphabet.BINARY); // should return "1111"
+  convert('15', Alphabet.DECIMAL, Alphabet.OCTAL); // should return "17"
+  convert('1010', Alphabet.BINARY, Alphabet.DECIMAL); // should return "10"
+  convert('1010', Alphabet.BINARY, Alphabet.HEXA_DECIMAL); // should return "a"
+
+  // other bases
+  convert('0', Alphabet.DECIMAL, Alphabet.ALPHA); // should return "a"
+  convert('27', Alphabet.DECIMAL, Alphabet.ALPHA_LOWER); // should return "bb"
+  // convert('hello', Alphabet.ALPHA_LOWER, Alphabet.HEXA_DECIMAL); // should return "320048"
+  // convert('SAME', Alphabet.ALPHA_UPPER, Alphabet.ALPHA_UPPER); // should return "SAME"
+  ////////////////////////////////////////////////////////
+  // function createChess(x, y) {
+  //   for (let i = 0; i < y; i++)
+  //     console.log(
+  //       (i % 2 ? ' #' : '# ')
+  //         .repeat(Math.floor(x / 2) + 1)
+  //         .slice(0, (x % 2) - 2),
+  //     );
+  // }
+  // createChess(8, 8);
 
   ////////////////////////////////////////////////////////
   // console.log(res());
