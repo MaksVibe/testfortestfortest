@@ -1,14 +1,5 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import s from './App.module.scss';
-
 function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
-
   // function number_cardinality(my_number) {
-  //   //Insert your code here
   //   const length = my_number.toString().length;
   //   for (let i = 0; i <= my_number.toString().length; i++) {
   //     if (Number(my_number.toString()[length - 1]) === 0) {
@@ -16,7 +7,7 @@ function App() {
   //     }
   //   }
   // }
-  // number_cardinality(100);
+  // console.log(number_cardinality(100));
 
   // var Alphabet = {
   //   BINARY: '01',
@@ -79,7 +70,7 @@ function App() {
   // console.log(res());
   // FizzBuzz
   // const fizzbuzz = num => {
-  //   for (let i = 1; i < num; i++) {
+  //   for (let i = 1; i <= num; i++) {
   //     if (i % 3 === 0 && i % 5 === 0) {
   //       console.log('fizzbuzz');
   //     } else if (i % 3 === 0) {
@@ -347,60 +338,13 @@ function App() {
 
   ////////////////////////////////////////////////////////
 
-  // let values = [3, 1, 3, 5, 2, 4, 4, 4];
-  // let uniqueValues = [...new Set(values)];
-  // console.log('uniqueValues', uniqueValues);
+  let values = [3, 1, 3, 5, 2, 4, 4, 4];
+  let uniqueValues = [...new Set(values)];
+  console.log('uniqueValues', uniqueValues);
 
   ////////////////////////////////////////////////////////
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        break;
-    }
-  };
-
-  return (
-    <div className={s.FormContainer}>
-      <form className={s.SignForm}>
-        <p>Вы можете авторизоваться с помощью Google Account:</p>
-        <button className={s.GoogleBtn}>Google</button>
-        <p>
-          Или зайти с помощью e-mail и пароля, предварительно
-          зарегистрировавшись:
-        </p>
-        <label>Электронная почта:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          placeholder="your@email.com"
-          onChange={handleChange}
-          className={s.SignInput}
-        ></input>
-        <label>Пароль:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-          className={s.SignInput}
-        ></input>
-        <ul className={s.SignBtnsWrap}>
-          <li>
-            <button className={s.SignInBtn}>войти</button>
-          </li>
-          <li>
-            <button className={s.SignUpBtn}>регистрация</button>
-          </li>
-        </ul>
-      </form>
-    </div>
-  );
+  return <div>Hiiiiiiiiiiiii...iiiii!</div>;
 }
 
 export default App;
