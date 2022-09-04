@@ -338,9 +338,16 @@ function App() {
 
   ////////////////////////////////////////////////////////
 
-  let values = [3, 1, 3, 5, 2, 4, 4, 4];
-  let uniqueValues = [...new Set(values)];
-  console.log('uniqueValues', uniqueValues);
+  // let values = [3, 1, 3, 5, 2, 4, 4, 4];
+  // let uniqueValues = [...new Set(values)];
+  // console.log('uniqueValues', uniqueValues);
+
+  ////////////////////////////////////////////////////////
+
+  const res = [5, 7, 9].slice(1);
+  // res.pop();
+  // res.push(4);
+  console.log('res', res);
 
   ////////////////////////////////////////////////////////
 
